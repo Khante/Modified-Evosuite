@@ -8,12 +8,12 @@ def cohen_d(x,y):
   return (mean(x) - mean(y)) / sqrt((std(x, ddof=1) ** 2 + std(y, ddof=1) ** 2) / 2.0)
 
 
-df = pd.read_csv('statisticsGOOD.csv')
+df = pd.read_csv('statisticsGOOD3.csv')
 
 cat1 = df[df['configuration_id']=='Old']
 print(cat1)
 cat2 = df[df['configuration_id']=='New']
 print(cat2)
 
-for column in ['Size', 'Length', 'MutationScore']:
+for column in ['Score']:
   print ("%s: %.2f (%f)" % (column, cohen_d(cat1[column], cat2[column]), wilcoxon(cat1[column], cat2[column]).pvalue))
